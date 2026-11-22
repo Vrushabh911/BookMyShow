@@ -1,0 +1,60 @@
+/* Showtime UI enhancements (loaded after style.css) */
+.hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.ghost-button { display: inline-block; padding: 13px 18px; border: 1px solid currentColor; border-radius: 6px; background: transparent; color: var(--white); font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s, color .2s; }
+.ghost-button:hover { background: var(--white); color: var(--ink); }
+.movie-modal .ghost-button, .ticket-modal .ghost-button { color: var(--ink); }
+.movie-modal .ghost-button:hover { background: var(--ink); color: var(--white); }
+.hero-image.fade { animation: hero-fade .8s ease, hero-drift 14s ease-in-out infinite alternate; }
+@keyframes hero-fade { from { opacity: 0; transform: scale(1.04); } }
+.hero-dots { position: absolute; left: 11%; bottom: 26px; display: flex; gap: 8px; z-index: 3; }
+.hero-dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 8px; background: rgba(255,255,255,.35); transition: width .3s, background .3s; }
+.hero-dots button.on { width: 26px; background: var(--coral); }
+
+.movie-card { cursor: pointer; }
+.movie-card:focus-visible { outline: 2px solid var(--coral); outline-offset: 5px; border-radius: 4px; }
+
+.active-filter { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 8px; padding: 7px 8px 7px 14px; border-radius: 20px; background: #f6dcd8; color: var(--coral-dark); font-size: 12px; }
+.active-filter button { width: 20px; height: 20px; padding: 0; border: 0; border-radius: 50%; background: var(--coral); color: white; line-height: 1; }
+.time-button { text-align: center; }
+.time-button small { display: block; margin-top: 3px; font-size: 9px; font-weight: 500; opacity: .8; }
+.time-button.fast { border-color: #ecd28a; background: #fffbea; color: #a77d00; }
+.time-button.fast:hover { border-color: #a77d00; background: #a77d00; color: white; }
+.time-button:disabled, .time-button.sold { border-color: var(--line); background: #efece7; color: #aaa5a0; cursor: not-allowed; }
+
+.seat-grid { display: flex; flex-direction: column; gap: 8px; }
+.seat-row { display: grid; grid-template-columns: 16px repeat(var(--n), 1fr); gap: 7px; align-items: center; }
+.row-label { color: #aaa5a0; font-size: 10px; font-weight: 700; }
+.seat.aisle { margin-left: 12px; }
+.seat:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.screen-label { filter: drop-shadow(0 10px 8px rgba(240,79,66,.18)); }
+.booking-bottom strong { transition: transform .2s; }
+
+.movie-modal { width: min(760px, 100%); }
+.movie-detail { display: grid; grid-template-columns: 220px 1fr; gap: 30px; align-items: start; }
+.movie-detail img { width: 100%; aspect-ratio: 2 / 2.8; object-fit: cover; border-radius: 6px; box-shadow: 0 14px 28px rgba(33,25,22,.2); }
+.movie-detail h2 { margin: 0 0 12px; font-family: "Playfair Display", serif; font-size: 34px; letter-spacing: -.8px; line-height: 1.1; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+.tag-row span { padding: 4px 10px; border: 1px solid var(--line); border-radius: 14px; color: var(--muted); font-size: 11px; font-weight: 600; }
+.movie-desc { margin: 0 0 14px; color: #4b4850; font-size: 14px; line-height: 1.65; }
+.detail-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+
+.ticket-modal { width: min(420px, 100%); padding: 34px 34px 30px; }
+.ticket h2 { margin: 0 0 4px; font-family: "Playfair Display", serif; font-size: 28px; letter-spacing: -.6px; }
+.ticket-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px; margin: 24px 0; }
+.ticket-grid span { display: block; color: var(--muted); font-size: 10px; letter-spacing: .8px; text-transform: uppercase; }
+.ticket-grid strong { font-size: 14px; }
+.ticket-cut { position: relative; margin: 0 -34px 22px; border-top: 2px dashed var(--line); }
+.ticket-cut::before, .ticket-cut::after { content: ""; position: absolute; top: -11px; width: 20px; height: 20px; border-radius: 50%; background: rgba(24,20,19,.9); }
+.ticket-cut::before { left: -10px; } .ticket-cut::after { right: -10px; }
+.barcode { height: 46px; margin-bottom: 22px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 5px, var(--ink) 5px 6px, transparent 6px 10px, var(--ink) 10px 13px, transparent 13px 15px); opacity: .85; }
+.ticket .primary-button { width: 100%; }
+
+@media (max-width: 640px) {
+    .movie-detail { grid-template-columns: 1fr; }
+    .movie-detail img { max-width: 180px; }
+    .hero-dots { left: 6%; }
+    .booking-modal { padding: 28px 20px; }
+    .seat-row { gap: 4px; }
+    .seat.aisle { margin-left: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-image, .hero-image.fade, .movie-card { animation: none; } }
